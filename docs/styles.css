@@ -480,6 +480,30 @@ img, svg { display: block; }
 }
 
 /* ── Secret Santa ───────────────────────────────────────────── */
+.steps-title { margin-top: 1.4em; color: var(--sun); }
+.santa-steps {
+  list-style: none; counter-reset: step;
+  margin: 0; padding: 0;
+  display: grid; gap: 10px;
+}
+.santa-steps li {
+  counter-increment: step;
+  position: relative;
+  background: rgba(255, 255, 255, .1);
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 16px;
+  padding: 12px 14px 12px 60px;
+  min-height: 56px;
+}
+.santa-steps li::before {
+  content: counter(step);
+  position: absolute; left: 12px; top: 10px;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--sun); color: var(--ink);
+  border: 2px solid var(--ink);
+  font-family: var(--font-display); font-size: 1.15rem; line-height: 1;
+}
 .santa-grid { display: grid; gap: 22px; margin-top: 28px; }
 .santa-rules, .santa-reveal {
   background: rgba(255, 255, 255, .1);
@@ -729,6 +753,8 @@ img, svg { display: block; }
   .santa-rules, .santa-reveal { padding: 28px; }
   .venue-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   .award-grid { grid-template-columns: repeat(2, 1fr); }
+  .santa-steps { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .santa-steps li { padding: 54px 16px 14px; }
   .menu { padding: 32px 36px 14px; }
   .menu-courses { grid-template-columns: 1fr 1fr; }
   .tl-item { grid-template-columns: 72px 1fr; gap: 20px; }
