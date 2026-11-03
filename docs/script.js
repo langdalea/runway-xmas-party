@@ -19,14 +19,6 @@
       '&body=' + encodeURIComponent(email.lines.join('\r\n'));
   }
 
-  // Works for anyone signed in to Microsoft 365, even with no email app set up.
-  function outlookWeb(email) {
-    return 'https://outlook.office.com/mail/deeplink/compose' +
-      '?to=' + encodeURIComponent(EMAIL) +
-      '&subject=' + encodeURIComponent(email.subject) +
-      '&body=' + encodeURIComponent(email.lines.join('\n'));
-  }
-
   var RSVP_YES = {
     subject: 'RSVP: Yes! Runway Christmas Party, Wed 2 Dec',
     lines: [
@@ -35,7 +27,6 @@
       'Count me in for the Runway Christmas party on Wednesday 2 December!',
       '',
       'Name: ',
-      'Joining the Secret Santa (yes/no): ',
       'Dietary requirements (if any): ',
       '',
       'See you there!',
@@ -72,62 +63,22 @@
     }
   }
 
-  // Email links don't work on every computer (no email app set up, or a
-  // browser that blocks them), so every email button opens a chooser.
-  var chooser = document.getElementById('email-chooser');
-  var chooserTitle = document.getElementById('email-chooser-title');
-  var chooserOutlook = document.getElementById('email-outlook');
-  var chooserApp = document.getElementById('email-app');
-  var chooserCopy = document.getElementById('email-copy');
-  var chooserCopyText = document.getElementById('email-copy-text');
-  var currentEmail = null;
-
-  function openChooser(email, title) {
-    currentEmail = email;
-    chooserTitle.textContent = title;
-    chooserOutlook.href = outlookWeb(email);
-    chooserApp.href = mailto(email);
-    if (typeof chooser.showModal === 'function') {
-      chooser.showModal();
-    } else {
-      window.location.href = mailto(email);
-    }
+  // Every email button opens a pre-filled email in the person's email app.
+  function wireEmailLink(link, email, label) {
+    link.href = mailto(email);
+    link.setAttribute('aria-label', label + ' (opens an email to Aleisha)');
   }
 
-  function wireEmailLink(link, email, title, label) {
-    link.href = mailto(email); // still works if the script fails
-    link.setAttribute('aria-label', label + ' (choose how to email Aleisha)');
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-      openChooser(email, title);
-    });
-  }
-
-  if (chooser) {
-    document.querySelectorAll('[data-rsvp-link]').forEach(function (link) {
-      wireEmailLink(link, RSVP_YES, 'RSVP: count me in!', link.textContent.trim() || 'RSVP');
-    });
-    document.querySelectorAll('[data-rsvp-decline]').forEach(function (link) {
-      wireEmailLink(link, RSVP_NO, "RSVP: can't make it", "Can't make it");
-    });
-    document.querySelectorAll('[data-award]').forEach(function (link) {
-      var award = link.getAttribute('data-award');
-      wireEmailLink(link, nomination(award), award ? 'Nominate: ' + award : 'Invent an award',
-        award ? 'Nominate someone for ' + award : 'Invent your own award');
-    });
-
-    chooserCopy.addEventListener('click', function () { copyText(EMAIL, chooserCopy, 'Copy address'); });
-    chooserCopyText.addEventListener('click', function () {
-      copyText('Subject: ' + currentEmail.subject + '\n\n' + currentEmail.lines.join('\n'), chooserCopyText, 'Copy message');
-    });
-    // Close after picking an option, or when clicking the backdrop.
-    [chooserOutlook, chooserApp].forEach(function (a) {
-      a.addEventListener('click', function () { setTimeout(function () { chooser.close(); }, 300); });
-    });
-    chooser.addEventListener('click', function (event) {
-      if (event.target === chooser) chooser.close();
-    });
-  }
+  document.querySelectorAll('[data-rsvp-link]').forEach(function (link) {
+    wireEmailLink(link, RSVP_YES, link.textContent.trim() || 'RSVP');
+  });
+  document.querySelectorAll('[data-rsvp-decline]').forEach(function (link) {
+    wireEmailLink(link, RSVP_NO, "Can't make it");
+  });
+  document.querySelectorAll('[data-award]').forEach(function (link) {
+    var award = link.getAttribute('data-award');
+    wireEmailLink(link, nomination(award), award ? 'Nominate someone for ' + award : 'Invent your own award');
+  });
 
   document.querySelectorAll('[data-copy-email]').forEach(function (button) {
     button.addEventListener('click', function () { copyText(EMAIL, button, 'Copy address'); });

@@ -22,7 +22,7 @@ The site lives in `docs/` so the private CSV is never inside the folder you uplo
 Everything comes to Aleisha by email (address set in `docs/config.js`):
 
 - **RSVP now** opens a pre-filled email: subject `RSVP: Yes! …`, with blanks for
-  name, Secret Santa (yes/no) and dietary requirements.
+  name and dietary requirements. Everyone who RSVPs yes is in the Secret Santa.
 - **Can't make it?** opens an `RSVP: Can't make it …` email.
 - Each **Nominate** button on an award card opens a `2026 Runway Awards nomination: …`
   email with the award already filled in.
@@ -35,26 +35,26 @@ section shows the address with a **Copy address** button for them.
 
 ## 1. Deploy
 
-**Netlify Drop (easiest):** go to <https://app.netlify.com/drop>, sign in, and drag the
-`docs` folder (not the whole project) onto the page. You get a link straight away.
-To update later: Netlify → your site → **Deploys** → drag the `docs` folder in again.
-
-**GitHub Pages:** push this project to a GitHub repo, then **Settings → Pages →
-Deploy from a branch → `main` / `/docs`**. Every push redeploys automatically.
+The site is live at <https://langdalea.github.io/runway-xmas-party/>, published by
+GitHub Pages from the `docs` folder on `main` in
+[langdalea/runway-xmas-party](https://github.com/langdalea/runway-xmas-party).
+Every push to `main` redeploys automatically. The repo is public, so never commit
+anything private.
 
 ## 2. Run the Secret Santa draw (after RSVPs close on Fri 6 Nov)
 
 1. Install Node.js (LTS) from <https://nodejs.org> if you don't have it.
-2. Go through the `RSVP: Yes!` emails and copy the name of everyone who said **yes** to
-   Secret Santa into `secret-santa/participants.txt`, one per line.
+2. Go through the `RSVP: Yes!` emails and copy the name of everyone who's coming into
+   `secret-santa/participants.txt`, one per line. Everyone attending is in the draw.
 3. In a terminal in this folder run:
 
    ```bash
    node secret-santa/draw.js
    ```
 
-4. Redeploy the `docs` folder (Netlify: drag it in again; GitHub: commit and push
-   `docs/secret-santa-data.js`). The reveal box appears on the site automatically.
+4. Commit and push **only** `docs/secret-santa-data.js` (it's encrypted, so it's safe).
+   Don't commit `participants.txt`: the repo is public. The reveal box appears on the
+   site a minute or two later.
 
 The draw won't overwrite an existing draw by accident. To redraw (everyone gets new
 matches and new codes), run `node secret-santa/draw.js --force`.
