@@ -1,0 +1,7 @@
+# Secret Santa answers — organiser's eyes only, never publish
+secret-santa/assignments-PRIVATE.csv
+*PRIVATE*
+
+# OS clutter
+.DS_Store
+Thumbs.db
