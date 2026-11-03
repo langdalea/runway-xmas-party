@@ -22,7 +22,8 @@ The site lives in `docs/` so the private CSV is never inside the folder you uplo
 Everything comes to Aleisha by email (address set in `docs/config.js`):
 
 - **RSVP now** opens a pre-filled email: subject `RSVP: Yes! …`, with blanks for
-  name and dietary requirements. Everyone who RSVPs yes is in the Secret Santa.
+  dietary requirements (the sender's address tells you who it's from). Everyone who
+  RSVPs yes is in the Secret Santa.
 - **Can't make it?** opens an `RSVP: Can't make it …` email.
 - Each **Nominate** button on an award card opens a `2026 Runway Awards nomination: …`
   email with the award already filled in.

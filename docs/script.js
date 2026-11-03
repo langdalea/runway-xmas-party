@@ -26,7 +26,6 @@
       '',
       'Count me in for the Runway Christmas party on Wednesday 2 December!',
       '',
-      'Name: ',
       'Dietary requirements (if any): ',
       '',
       'See you there!',
@@ -38,8 +37,6 @@
       'Kia ora Aleisha,',
       '',
       "Sadly I can't make the Runway Christmas party on Wednesday 2 December.",
-      '',
-      'Name: ',
     ],
   };
 
