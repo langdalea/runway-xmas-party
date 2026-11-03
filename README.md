@@ -42,7 +42,7 @@ GitHub Pages from the `docs` folder on `main` in
 Every push to `main` redeploys automatically. The repo is public, so never commit
 anything private.
 
-## 2. Run the Secret Santa draw (after RSVPs close on Fri 6 Nov)
+## 2. Run the Secret Santa draw (after RSVPs close on Wed 11 Nov)
 
 1. Install Node.js (LTS) from <https://nodejs.org> if you don't have it.
 2. Go through the `RSVP: Yes!` emails and copy the name of everyone who's coming into

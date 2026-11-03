@@ -8,5 +8,5 @@ window.PARTY_CONFIG = {
   // New Zealand daylight time is UTC+13 in Nov/Dec.
   eventStart: '2026-12-02T15:00:00+13:00',
   eventEnd: '2026-12-02T22:00:00+13:00',
-  rsvpDeadline: '2026-11-06T23:59:59+13:00',
+  rsvpDeadline: '2026-11-11T23:59:59+13:00',
 };

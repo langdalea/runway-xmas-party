@@ -6,7 +6,7 @@
   var config = window.PARTY_CONFIG || {};
   var EVENT_START = new Date(config.eventStart || '2026-12-02T15:00:00+13:00');
   var EVENT_END = new Date(config.eventEnd || '2026-12-02T22:00:00+13:00');
-  var RSVP_DEADLINE = new Date(config.rsvpDeadline || '2026-11-06T23:59:59+13:00');
+  var RSVP_DEADLINE = new Date(config.rsvpDeadline || '2026-11-11T23:59:59+13:00');
   var DAY = 24 * 60 * 60 * 1000;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
