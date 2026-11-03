@@ -189,6 +189,13 @@ img, svg { display: block; }
   margin: 0 auto .3em;
   filter: drop-shadow(2px 2px 0 var(--white)) drop-shadow(3px 3px 0 rgba(19, 41, 61, .15));
 }
+.hero-thanks {
+  font-weight: 800;
+  font-size: 1.1rem;
+  max-width: 30em;
+  margin: 0 auto 1em;
+  color: var(--ocean-deep);
+}
 .hero-when { font-size: 1.15rem; margin-bottom: 1.4em; }
 .hero-when strong { font-size: 1.25rem; }
 
