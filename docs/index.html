@@ -126,7 +126,8 @@
       <p class="countdown-done" hidden></p>
 
       <div class="hero-actions">
-        <a class="btn btn-rsvp" href="mailto:aleisha.langdale@runway.co.nz?subject=RSVP" data-rsvp-link>RSVP now</a>
+        <a class="btn btn-rsvp" href="mailto:aleisha.langdale@runway.co.nz?subject=RSVP" data-rsvp-link data-before-deadline>RSVP now</a>
+        <a class="btn btn-rsvp" href="#secret-santa" data-santa-cta hidden>Your Secret Santa <span aria-hidden="true">🎁</span></a>
         <a class="btn btn-ghost" href="#schedule">See the plan</a>
       </div>
     </div>
@@ -435,21 +436,30 @@
     <!-- ═════════ RSVP ═════════ -->
     <section class="section section--rsvp" id="rsvp" aria-labelledby="rsvp-title">
       <div class="container rsvp">
-        <p class="kicker kicker--light">RSVP</p>
-        <h2 id="rsvp-title">Are you in?</h2>
-        <p class="rsvp-deadline">
-          <span class="rsvp-deadline-label" data-rsvp-status>RSVPs close</span>
-          <span class="rsvp-deadline-date">Wednesday 11 November</span>
-          <span class="rsvp-deadline-left" data-deadline-left></span>
-        </p>
-        <p class="lede lede--light">RSVP by email to Aleisha. The button opens a ready-to-go email: just fill in the blanks and hit send. It helps us sort numbers for croquet and dinner, and everyone who RSVPs yes is automatically in the Secret Santa draw.</p>
+        <div data-before-deadline>
+          <p class="kicker kicker--light">RSVP</p>
+          <h2 id="rsvp-title">Are you in?</h2>
+          <p class="rsvp-deadline">
+            <span class="rsvp-deadline-label" data-rsvp-status>RSVPs close</span>
+            <span class="rsvp-deadline-date">Wednesday 11 November</span>
+            <span class="rsvp-deadline-left" data-deadline-left></span>
+          </p>
+          <p class="lede lede--light">RSVP by email to Aleisha. The button opens a ready-to-go email: just fill in the blanks and hit send. It helps us sort numbers for croquet and dinner, and everyone who RSVPs yes is automatically in the Secret Santa draw.</p>
 
-        <a class="btn btn-rsvp btn-rsvp--xl" href="mailto:aleisha.langdale@runway.co.nz?subject=RSVP" data-rsvp-link>RSVP now</a>
-        <p class="rsvp-decline"><a href="mailto:aleisha.langdale@runway.co.nz?subject=RSVP" data-rsvp-decline>Can't make it? Let Aleisha know</a></p>
+          <a class="btn btn-rsvp btn-rsvp--xl" href="mailto:aleisha.langdale@runway.co.nz?subject=RSVP" data-rsvp-link>RSVP now</a>
+          <p class="rsvp-decline"><a href="mailto:aleisha.langdale@runway.co.nz?subject=RSVP" data-rsvp-decline>Can't make it? Let Aleisha know</a></p>
 
-        <div class="rsvp-card">
-          <p class="rsvp-card-title"><span aria-hidden="true">🥗</span> Dietary requirements</p>
-          <p>Vegetarian, vegan, gluten-free, allergies or anything else? <strong>Email them through to Aleisha</strong> (there's a spot in the RSVP email) so the set menu at Azabu has you covered.</p>
+          <div class="rsvp-card">
+            <p class="rsvp-card-title"><span aria-hidden="true">🥗</span> Dietary requirements</p>
+            <p>Vegetarian, vegan, gluten-free, allergies or anything else? <strong>Email them through to Aleisha</strong> (there's a spot in the RSVP email) so the set menu at Azabu has you covered.</p>
+          </div>
+        </div>
+
+        <div data-after-deadline hidden>
+          <p class="kicker kicker--light">You're all set</p>
+          <h2 id="changes-title">Change of plans?</h2>
+          <p class="lede lede--light">RSVPs have closed. Thanks, everyone! Can't make it after all, or your dietary requirements have changed? Just let Aleisha know.</p>
+          <a class="btn btn-rsvp btn-rsvp--xl" href="mailto:aleisha.langdale@runway.co.nz?subject=Change%20of%20plans" data-change-link>Email Aleisha</a>
         </div>
 
         <p class="form-help">

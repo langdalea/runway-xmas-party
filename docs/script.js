@@ -40,6 +40,11 @@
     ],
   };
 
+  var CHANGE_OF_PLANS = {
+    subject: 'Change of plans: Runway Christmas Party, Wed 2 Dec',
+    lines: ['Kia ora Aleisha,', '', ''],
+  };
+
   function nomination(award) {
     return award
       ? { subject: '2026 Runway Awards nomination: ' + award,
@@ -71,6 +76,9 @@
   });
   document.querySelectorAll('[data-rsvp-decline]').forEach(function (link) {
     wireEmailLink(link, RSVP_NO, "Can't make it");
+  });
+  document.querySelectorAll('[data-change-link]').forEach(function (link) {
+    wireEmailLink(link, CHANGE_OF_PLANS, 'Email Aleisha about a change of plans');
   });
   document.querySelectorAll('[data-award]').forEach(function (link) {
     var award = link.getAttribute('data-award');
@@ -120,6 +128,20 @@
     return Math.round((utcMidnight(to) - utcMidnight(from)) / DAY);
   }
 
+  // Once RSVPs close, swap the "RSVP now" calls to action for the
+  // Secret Santa reveal and a "change of plans" email.
+  var switchedOver = false;
+  function showAfterDeadline() {
+    if (switchedOver) return;
+    switchedOver = true;
+    document.querySelectorAll('[data-before-deadline]').forEach(function (el) { el.hidden = true; });
+    document.querySelectorAll('[data-after-deadline]').forEach(function (el) { el.hidden = false; });
+    if (window.SECRET_SANTA) {
+      document.querySelectorAll('[data-santa-cta]').forEach(function (el) { el.hidden = false; });
+    }
+    document.getElementById('rsvp').setAttribute('aria-labelledby', 'changes-title');
+  }
+
   function updateDeadline(now) {
     var left = RSVP_DEADLINE - now;
     var banner = document.querySelector('.deadline-banner');
@@ -133,6 +155,7 @@
         ? '<strong>RSVPs have closed</strong> — thanks, everyone! <a href="#secret-santa">Reveal your Secret Santa match</a>.'
         : '<strong>RSVPs have closed</strong> — thanks, everyone! Secret Santa matches are coming soon.';
       if (status) status.textContent = 'RSVPs closed';
+      showAfterDeadline();
     } else {
       var days = calendarDaysBetween(now, RSVP_DEADLINE);
       label = days <= 0 ? 'Last day — RSVP today!' : days === 1 ? 'Closes tomorrow!' : days + ' days left';
