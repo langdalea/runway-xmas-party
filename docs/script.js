@@ -129,7 +129,9 @@
 
     if (left <= 0) {
       banner.classList.add('is-closed');
-      message.innerHTML = '<strong>RSVPs have closed</strong> — thanks, everyone! Secret Santa matches are coming soon.';
+      message.innerHTML = window.SECRET_SANTA
+        ? '<strong>RSVPs have closed</strong> — thanks, everyone! <a href="#secret-santa">Reveal your Secret Santa match</a>.'
+        : '<strong>RSVPs have closed</strong> — thanks, everyone! Secret Santa matches are coming soon.';
       if (status) status.textContent = 'RSVPs closed';
     } else {
       var days = calendarDaysBetween(now, RSVP_DEADLINE);
