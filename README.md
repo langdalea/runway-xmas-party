@@ -66,8 +66,8 @@ Open `secret-santa/assignments-PRIVATE.csv` and send each person **only their ow
 (Teams DM or individual email), e.g.:
 
 > Kia ora Sam! Your Secret Santa code is **JANDAL-4821**. Enter it in the "Reveal your
-> Secret Santa" box at <site link> to see who you're buying for. Remember: second-hand
-> only, no spending limit, and bring it to croquet! 🎁
+> Secret Santa" box at <site link> to see who your gift is for. Remember: second-hand
+> only (something pre-loved from home is perfect), and bring it to croquet! 🎁
 
 Don't put the codes in a group chat or one email with everyone on it.
 
